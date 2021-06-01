@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  background: #ff4444;
+}
+
+#app{
+  user-select: none;
+  position: absolute;
+  color: white;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* display: grid;
+  place-items: center;
+  height: 100%; width: 100%; */
+  font-family: ubuntu, sans;
+}
+
+h1 {
+  font-size: 5rem;
+  line-height: 1rem;
+}
+p {
+  font-size: 1.5rem;
+}
+button {
+  cursor: pointer;
+  transition-duration: 0.33s;
+  font-size: 2rem;
+  border-radius: 2rem;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: #ff4444;
+  font-weight: bolder;
+}
+
+button:hover {
+  background: #ff4444;
+  color: white;
+}
