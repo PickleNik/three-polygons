@@ -39,11 +39,11 @@ function i () {
   l = new t.DirectionalLight(0xffffff, 1)
   // l.position.y = 200
   // l.position.z = -100
-  l.position.z = 1
+  l.position.z = 0.1
   s.add(l)
 
   l1 = new t.DirectionalLight(0xffffff, 1)
-  l1.position.z = -10
+  l1.position.z = -0.1
   s.add(l1)
 
   g = new t.PlaneGeometry(wld.o.w, wld.o.h, wld.o.wsegs, wld.o.hsegs)
@@ -52,7 +52,10 @@ function i () {
     wireframe: false,
     side: t.DoubleSide,
     flatShading: t.FlatShading,
-    vertexColors: true
+    vertexColors: true,
+    metalness: 1,
+    roughness: 0,
+    // shininess: 1,
   })
   o = new t.Mesh(g, m)
   // o.rotation.x -= 1.5
@@ -116,6 +119,12 @@ function a (time) {
   // o.rotation.x = 0.1
   // o.rotation.y = time * 0.001
   // o.rotation.z = time * 0.001
+
+  l.position.x = mouse.x
+  l1.position.x = mouse.x
+  l.position.y = mouse.y
+  l1.position.y = mouse.y
+
   raycaster.setFromCamera(mouse, c)
 
   const { array, originalPosition, randomValues } = o.geometry.attributes.position
@@ -129,9 +138,10 @@ function a (time) {
       + Math.sin(frame + randomValues[i + 1])
       * 0.075
     // z
-    // array[i + 2] = originalPosition[i + 2]
-    //   + Math.tan(frame + randomValues[i + 2])
-    //   * 0.001
+    array[i + 2] = originalPosition[i + 2]
+      // + Math.tan(frame + randomValues[i + 2])
+      + Math.sin(frame + randomValues[i + 2])
+      * 0.001
     o.geometry.attributes.position.needsUpdate = true
   }
 
